@@ -1,0 +1,26 @@
+[package]
+name = "hlm"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+calloop = "0.13"
+calloop-wayland-source = "0.3"
+clap = { version = "4", features = ["derive"] }
+cosmic-text = "0.12"
+futures-util = { version = "0.3", default-features = false, features = ["sink"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+smithay-client-toolkit = "0.19"
+wayland-client = "0.31"
+tiny-skia = { version = "0.11", default-features = false, features = ["std"] }
+tokio = { version = "1", features = ["rt", "net", "sync", "time", "macros"] }
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-webpki-roots"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+panic = "abort"
+strip = true
